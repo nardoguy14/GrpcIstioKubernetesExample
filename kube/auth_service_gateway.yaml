@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: grpc-gateway
+spec:
+  servers:
+    - hosts:
+        - '*'
+      port:
+        name: grpc-gateway
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: echo-server
+spec:
+  hosts:
+    - '*'
+  gateways:
+    - grpc-gateway
+  http:
+    - route:
+        - destination:
+            host: authservice
+            port:
+              name: grpc-test
+              number: 50055
+
