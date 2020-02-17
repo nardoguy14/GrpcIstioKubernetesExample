@@ -24,6 +24,10 @@ Istio will be setup to handle L7 load balancing across the two versions and to v
 
 `https://istio.io/docs/setup/getting-started/#platform`
 
+## Setup Envoy Sideinjection by Istio
+
+`kubectl label namespace default istio-injection=enabled`
+
 ## Setup Service Graph
 
 `https://istio.io/docs/tasks/observability/kiali/`
