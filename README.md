@@ -1,38 +1,38 @@
-#About
+# About
 
 This working example will deploy two versions of a GRPC service to Minikube, a single local Node instance of Kubernetes.
 Istio will be setup to handle L7 load balancing across the two versions and to visualize our services.
 
-#Setup Working Environment
+# Setup Working Environment
 
-##Download Docker
+## Download Docker
 
 `https://hub.docker.com`
 
-##Download Minikube
+## Download Minikube
 (a single node instance of Kubernetes)
 
 `https://kubernetes.io/docs/tasks/tools/install-minikube/#before-you-begin`
 
-##Download Istio
+## Download Istio
 
 `https://istio.io/docs/setup/getting-started/#platform`
 
-##Setup Service Graph
+## Setup Service Graph
 
 `https://istio.io/docs/tasks/observability/kiali/`
 
-#Setup Code
+# Setup Code
 
-##Download protoc for Grpc
+## Download protoc for Grpc
 
 `pip install grpcio-tools`
 
-#Generate GRPC Stubs and Service Code
+# Generate GRPC Stubs and Service Code
 
 `python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. auth_service.proto`
 
-#Generate Containers
+# Generate Containers
 
 We need to build the containers for Minikube to use within its own
 docker instance so first we get setup up for that environment.
@@ -49,7 +49,7 @@ We will rebuild a second version of the container.
 
 `docker build -t auth_service:v2 -f Dockerfile .`
 
-#Deploy to Kubernetes Minikube
+# Deploy to Kubernetes Minikube
 
 First we will handle the deployment of the grpc instances and service which points to both.
 
@@ -65,7 +65,7 @@ You will need to find out the ingress host and port that is reachable.
 
 `export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT`
 
-#Call Services
+# Call Services
 
 First find out your host and port.
 
