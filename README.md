@@ -51,7 +51,7 @@ docker instance so first we get setup up for that environment.
 
 Now we build the containers.
 
-`docker build -t auth_service:v1-f Dockerfile .`
+`docker build -t auth_service:v1 -f Dockerfile .`
 
 Now we change `authorization_server.py` code to print out different return value of v2.
 
